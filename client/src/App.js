@@ -4,10 +4,12 @@ import Search from "./pages/Search"
 import Saved from "./pages/Saved"
 import Navbar from "./components/Navbar/myNavbar"
 import Container from "react-bootstrap/Container"
+import { BookProvider } from "./utils/BookContext"
 
 function App() {
   return (
-  <Container>
+<BookProvider>
+<Container>
       <Router>
         <div>
           <Navbar/>
@@ -19,6 +21,8 @@ function App() {
         </div>
       </Router>
   </Container>
+</BookProvider>
+
   );
 }
 

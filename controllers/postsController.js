@@ -6,14 +6,25 @@ module.exports = {
 
     //find all
     findAll: function (req, res) {
-        db.Post.find(req.query)
+        db.Books.find(req.query)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     findById: function (req, res) {
-        db.Post.findById(req.params.id)
+        db.Books.findById(req.params.id)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
-    }
-
+    },
+    create: function (req,res){
+        db.Books.create(req.body)
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    },
+    remove: function(req, res) {
+        console.log("this: ",req.params.id)
+        db.Books.findOne({ id: req.params.id })
+          .then(dbModel => dbModel.remove())
+          .then(dbModel => res.json(dbModel))
+          .catch(err => res.status(422).json(err));
+      }
 }

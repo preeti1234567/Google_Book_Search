@@ -6,14 +6,14 @@ const postsController = require("../../controllers/postsController");
 router
     .route("/")
     .get(postsController.findAll)
-    // .post(postsController.create);
+    .post(postsController.create);
 
 //matches with /api/books/:id
 router
     .route("/:id")
     .get(postsController.findById)
     // .put(postsController.update)
-    // .delete(postsController.remove);
+    .delete(postsController.remove);
 
 
 
