@@ -1,4 +1,5 @@
 import React from "react";
+import Book from "./Book"
 
 const Saved = (props) => {
   return (
@@ -8,15 +9,17 @@ const Saved = (props) => {
         <p className="lead">Search for and Save Books of Interest</p>
       </div>
       <h1>Saved Books </h1>
-      {props.books.map((book) => (
+      <Book/>
+      { props.book ? (props.books.map((book) => (
         <Book
-          url={book.url}
+          link={book.link}
           title={book.title}
-          author={book.author}
-          details={book.details}
+          authors={book.authors}
+          description={book.description}
+          image={book.image}
         />
-      ))}
-      ;
+      ))) : (<h2>No Saved Books</h2>)}
+      
     </div>
   );
 };
