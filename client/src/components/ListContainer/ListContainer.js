@@ -42,7 +42,7 @@ export default function ListContainer() {
 
     return (
     <>
-        {Books.length ? (  <h1 className="d-flex justify-content-center">Results for: {state.searchInput}</h1>) : null}
+        {Books.length ? (<h1 className="d-flex justify-content-center">Results for: {state.searchInput}</h1>) : null}
         <ListGroup>
             {Books ? (Books.map((book, i) => (
                 <ListItem book={book} key={i}/>
