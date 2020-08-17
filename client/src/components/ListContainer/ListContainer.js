@@ -10,10 +10,10 @@ import API from "../../utils/API"
 
 export default function ListContainer() {
     const [Books, setBooks] = useState([])
-    const [state] = useBookContext();
+    const [state, dispatch] = useBookContext();
 
     useEffect(() => {
-        if (state.searchInput){
+        if (state.searchInput) {
 
             const title = state.searchInput.replace(/ /g, "+");
             API.getBooks(title)
@@ -31,6 +31,10 @@ export default function ListContainer() {
                         books.push(bookData)
                     });
                     setBooks(books)
+
+                    dispatch({ type: "searchResults",
+                        searchResults: books
+                    })
                 })
         }
     }, [state])

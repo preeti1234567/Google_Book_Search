@@ -13,10 +13,9 @@ export default function myBanner() {
         e.preventDefault()
         // console.log(inputRef.current.value);
         dispatch({
-            type: "search",
+            type: "searchInput",
             searchInput: inputRef.current.value
         })
-        console.log("State from Banner", state);
     }
 
     return (

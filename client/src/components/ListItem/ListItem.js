@@ -4,24 +4,35 @@ import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
 import Button from "react-bootstrap/Button"
 import Image from "react-bootstrap/Image"
-
+import { useBookContext } from "../../utils/BookContext"
 export default function ListItem({ book }) {
-    const title = createRef()
-    function handleSave (){
-        console.log(title.current);
+
+    const [state, dispatch] = useBookContext();
+    const book_id = createRef()
+    
+
+    function handleSave (e){
+        e.preventDefault();
+        console.log(book_id.current.id);
+
+        dispatch({type: "saveBook",
+        id: book_id.current.id})
     }
+
+    
+
     return (
 
-    <ListGroup.Item id={book.id}>
+    <ListGroup.Item>
         <Row>
             <Col>
-            <h2 ref={title}>{book.title}</h2>
+            <h2>{book.title}</h2>
             <p>{book.authors}</p>
             </Col>
     
             <Col className="d-flex justify-content-end align-items-start">
                 <a className="mx-2 btn btn-info" href={book.link} target="_blank" rel="noopener noreferrer">View</a>
-                <Button className="mx-2" onClick={handleSave}>Save</Button>
+                <Button className="mx-2" onClick={handleSave} ref={book_id} id={book.id}>Save</Button>
             </Col>
         </Row>
 
