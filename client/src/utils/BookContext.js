@@ -17,14 +17,14 @@ const reducer = (state, action) => {
             return {...state, searchResults: action.searchResults}
 
         case "saveBook":
-            console.log(state.searchResults);
             const item = state.searchResults.filter(result => (
-                result.id === action.id
-            ))
+                result.id === action.id));
+            return API.saveBook(item);
             
-            return API.saveBook(item)
+        case "deleteBook": 
+                const id = action.id;
+            return API.deleteBook(id);
             
-        case "deleteBook": return
         default:
             throw new Error(`Invalid action type: ${action.type}`);
     }
