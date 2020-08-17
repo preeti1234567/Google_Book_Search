@@ -22,9 +22,11 @@ const reducer = (state, action) => {
             return API.saveBook(item);
             
         case "deleteBook": 
-                const id = action.id;
+            const id = action.id;
             return API.deleteBook(id);
-            
+        case "getSavedBooks": 
+            const data = action.results;
+            return {...state, savedBooks: data}    
         default:
             throw new Error(`Invalid action type: ${action.type}`);
     }

@@ -1,7 +1,19 @@
-import React from "react";
-import Book from "./Book"
+import React, {useEffect, useState} from "react";
+import Book from "./Book";
+import API from "../utils/API";
+import { useBookContext } from "../utils/BookContext";
+const Saved = () => {
+  const [state, dispatch] = useBookContext();
+  // const [data, setData] = useState([]);
 
-const Saved = (props) => {
+  useEffect(()=> {
+    API.getSavedBooks()
+    .then((data) => {
+      // setData(data.data)
+      dispatch({type: "getSavedBooks", results: data.data})
+    })
+  },[])
+
   return (
     <div className="container">
       <div className="jumbotron">
@@ -9,13 +21,14 @@ const Saved = (props) => {
         <p className="lead">Search for and Save Books of Interest</p>
       </div>
       <h1>Saved Books </h1>
-      { props.book ? (props.books.map((book) => (
-        <Book
+      { state["savedBooks"] ? (state["savedBooks"].map((book) => (
+        <Book key={book.id}
           link={book.link}
           title={book.title}
           authors={book.authors}
           description={book.description}
           image={book.image}
+          id={book.id}
         />
       ))) : (<h2>No Saved Books</h2>)}
       
