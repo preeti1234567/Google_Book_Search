@@ -9,7 +9,6 @@ const Saved = (props) => {
         <p className="lead">Search for and Save Books of Interest</p>
       </div>
       <h1>Saved Books </h1>
-      <Book/>
       { props.book ? (props.books.map((book) => (
         <Book
           link={book.link}
