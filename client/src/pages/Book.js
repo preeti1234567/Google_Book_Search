@@ -1,5 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useBookContext } from "../utils/BookContext";
+
 const Book = (props) => {
+  const [state, dispatch] = useBookContext();
+
+  useEffect(()=>{
+    
+  },[state])
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    console.log(e.target.getAttribute("id"))
+    let id = e.target.getAttribute("id")
+    dispatch({ type: "deleteBook", id: id })
+    
+  }
   return (
     <div className="card">
       <div className="row card-body">
@@ -8,8 +23,8 @@ const Book = (props) => {
           <h5 className="card-title">{props.authors}</h5>
         </div>
         <div className="col-md-3">
-          <a className="btn btn-info">View</a>
-          <button className="btn btn-danger">Delete</button>
+          <a className="btn btn-info" href={props.link} target="_blank" rel="noopener noreferrer">View</a>
+          <button className="btn btn-danger" id={props.id} onClick={handleDelete}>Delete</button>
         </div>
       </div>
       <div className="row card-body">

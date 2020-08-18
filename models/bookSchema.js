@@ -23,6 +23,10 @@ const booksSchema = new Schema({
     link: {
         type: String
     },
+    id: {
+        type: String,
+        required: "must have an ID"
+    }
 });
 
 const Books = mongoose.model("Books", booksSchema);
