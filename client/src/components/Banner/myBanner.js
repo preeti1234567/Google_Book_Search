@@ -7,7 +7,7 @@ import { useBookContext } from "../../utils/BookContext"
 export default function myBanner() {
 
     const inputRef = useRef();
-    const [state,  dispatch] = useBookContext();
+    const [state, dispatch] = useBookContext();
 
     function handleSubmit(e) {
         e.preventDefault()
