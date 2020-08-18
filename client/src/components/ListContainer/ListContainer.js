@@ -25,9 +25,17 @@ export default function ListContainer() {
                             title: book.volumeInfo.title,
                             authors: book.volumeInfo.authors,
                             description: book.volumeInfo.description,
-                            image: book.volumeInfo.imageLinks.thumbnail,
                             link: book.volumeInfo.infoLink
                         }
+                   
+                        if (book.volumeInfo.imageLinks){
+                            if (book.volumeInfo.imageLinks.thumbnail){
+                                bookData["image"] = book.volumeInfo.imageLinks.thumbnail
+                            }
+                        } else {
+                            bookData["image"] = "./img/download.png"
+                        }
+                        
                         books.push(bookData)
                     });
                     setBooks(books)
