@@ -19,10 +19,7 @@ export default function ListItem({ book }) {
         id: book_id.current.id})
     }
 
-    
-
     return (
-
     <ListGroup.Item>
         <Row>
             <Col>

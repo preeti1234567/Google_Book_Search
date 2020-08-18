@@ -2,6 +2,7 @@ import React from "react";
 import Book from "./Book"
 
 const Saved = (props) => {
+  
   return (
     <div className="container">
       <div className="jumbotron">
@@ -9,7 +10,7 @@ const Saved = (props) => {
         <p className="lead">Search for and Save Books of Interest</p>
       </div>
       <h1>Saved Books </h1>
-      { props.book ? (props.books.map((book) => (
+      { props.books ? (props.books.map((book) => (
         <Book
           link={book.link}
           title={book.title}
