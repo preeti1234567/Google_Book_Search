@@ -19,11 +19,16 @@ const reducer = (state, action) => {
         case "saveBook":
             const item = state.searchResults.filter(result => (
                 result.id === action.id));
-            return API.saveBook(item);
+                API.saveBook(item);
+                return {...state, lastSavedBook: item} 
             
         case "deleteBook": 
             const id = action.id;
-            return API.deleteBook(id);
+            API.deleteBook(id);
+            const removedBookArray = state.savedBooks.filter( book => {
+                return book.id !== id
+            })
+            return {...state, savedBooks: removedBookArray}
         case "getSavedBooks": 
             const data = action.results;
             return {...state, savedBooks: data}    
